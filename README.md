@@ -15,26 +15,33 @@ A LangGraph-based system for analyzing Tesla earnings reports. This project extr
 1. Clone this repository
 2. Install dependencies using UV:
 
+WARNING - using Huggingface embeddings (large install)
+
 ```bash
-uv pip install -r requirements.txt
+uv sync
 ```
 
-3. Create a `.env` file based on `.env.example` and add your API keys
+3. Create a `.env` file based on `.env.example` and add your Claude API keys
+
+4. Add file `tsla-20240331-gen.py` to the /data directory or rename in the config.py to your file name.
+
+5. Run
 
 ## Usage
 
 ```bash
-python main.py --pdf_path path/to/tesla/earnings.pdf
+uv run reporter
 ```
 
 ## Project Structure
 
 - `agents/`: Contains agent implementations for each step of the workflow
+- `utils/` : Contains PDF chunking and embedding operations, configure in the config.py
 - `main.py`: Entry point for the application
 - `config.py`: Configuration settings
 
 ## Requirements
 
-- Python 3.9+
+- Python 3.12+
 - Redis server
 - Anthropic API key
