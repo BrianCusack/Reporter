@@ -1,13 +1,11 @@
 """Analysis Agent for the Tesla Earnings Analyzer."""
 
 from typing import Dict, Any
-import logging
-import colorlog
 from langchain_redis import RedisVectorStore
 
 from langchain_anthropic import ChatAnthropic
 from langchain_huggingface import HuggingFaceEmbeddings
-import reporter.config as config
+import reporter.utils.config as config
 from reporter.utils.logging import setup_logger
 
 logger = setup_logger(__name__)
@@ -56,7 +54,7 @@ def analysis_agent(state: Dict[str, Any]) -> Dict[str, Any]:
             logger.info(f"Processing query: {query[:50]}...")
             # Get relevant chunks
             docs = redis_store.similarity_search(query, k=config.RETRIEVAL_K)
-            logger.info(f"Retrieved {len(docs)} relevant documents")
+            logger.info(f"Retrieved {len(docs)} relevant results")
             context = "\n\n".join([doc.page_content for doc in docs])
             
             # Use Claude to analyze the relevant chunks

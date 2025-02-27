@@ -6,7 +6,7 @@ import os
 
 from langchain_anthropic import ChatAnthropic
 
-import reporter.config as config
+import reporter.utils.config as config
 from reporter.utils.logging import setup_logger
 
 logger = setup_logger(__name__)
@@ -58,7 +58,7 @@ def report_generator_tool(state: Dict[str, Any]) -> Dict[str, Any]:
         with open(output_path, "w") as f:
             f.write(report)
             
-        logger.info(f"Report saved to {config.PDF_PATH}")
+        logger.info(f"Report saved to {config.OUTPUT_PATH}")
         
         return_state.update({
             "report": report

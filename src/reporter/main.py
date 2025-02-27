@@ -2,10 +2,10 @@
 
 import os
 import sys
-from typing import TypedDict, List, Dict, Any
+from typing import TypedDict, Dict, Any
 
 from langgraph.graph import StateGraph, END
-import reporter.config as config
+import reporter.utils.config as config
 from reporter.utils.logging import setup_logger
 from reporter.utils.pdf_loader import pdf_loader_tool
 from reporter.utils.vector_store import vector_store_agent

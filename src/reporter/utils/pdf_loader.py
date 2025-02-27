@@ -5,7 +5,7 @@ from typing import Dict, Any
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-import reporter.config as config
+import reporter.utils.config as config
 from reporter.utils.logging import setup_logger
 
 logger = setup_logger(__name__)

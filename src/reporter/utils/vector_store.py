@@ -4,12 +4,12 @@ from typing import Dict, Any
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_redis import RedisConfig, RedisVectorStore
 import redis
-import reporter.config as config
+import reporter.utils.config as config
 from reporter.utils.logging import setup_logger
 
 logger = setup_logger(__name__)
 
-def vector_store_agent(chunks: Dict[str, Any]) -> bool:
+def vector_store_agent(chunks: Dict[str, Any]) -> None:
     """
     Embedding and storing chunks in a Redis vector store.
     """
@@ -46,11 +46,7 @@ def vector_store_agent(chunks: Dict[str, Any]) -> bool:
         redis_store.add_texts(texts=texts, metadatas=metadatas)
         
         logger.info(f"Successfully embedded {len(texts)} chunks into fresh Redis index")
-        
-        # Return state matching AgentState TypedDict
-        return True
 
     except Exception as e:
         error_msg = f"Error loading embeddings: {str(e)}"
         logger.error(error_msg)
-        return False
