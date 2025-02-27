@@ -17,7 +17,8 @@ REDIS_INDEX_NAME = os.getenv("REDIS_INDEX_NAME", "tsla_earnings")
 
 # File Paths
 PDF_PATH = os.getenv("PDF_PATH", "data/tsla-20240331-gen.pdf")
-OUTPUT_PATH = os.getenv("OUTPUT_PATH", "output/tesla_earnings_analysis.md")
+OUTPUT_PATH = os.getenv("OUTPUT_PATH", "tesla_earnings_analysis.md")
+GRAPH_PATH = os.getenv("GRAPH_PATH", "output/workflow/workflow_graph.png")
 
 # Model Settings
 CLAUDE_MODEL = "claude-3-7-sonnet-latest"
@@ -29,14 +30,7 @@ CHUNK_OVERLAP = 100
 RETRIEVAL_K = 3
 
 # Analysis Queries
-ANALYSIS_QUERIES = [
-    "What were Tesla's total revenue and profit for the reported period?",
-    "What are the main highlights from the earnings report?",
-    "How did Tesla perform compared to previous quarters?",
-    "What are the key growth metrics mentioned in the report?",
-    "What challenges or risks were mentioned in the report?",
-    "What is Tesla's outlook or guidance for future quarters?"
-]
+QUESTION_COUNT = 5
 
 # Report Section Template
 REPORT_TEMPLATE = """

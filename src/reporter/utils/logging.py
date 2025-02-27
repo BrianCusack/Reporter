@@ -3,8 +3,9 @@ import colorlog
 
 # Define agent-specific colors
 AGENT_COLORS = {
+    'planner': 'purple',     
     'pdf_loader': 'green',
-    'vector_store': 'purple',
+    'vector_store': 'blue', 
     'analyzer': 'cyan',
     'report_generator': 'yellow',
     'graph': 'green',

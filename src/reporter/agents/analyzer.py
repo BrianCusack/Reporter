@@ -50,8 +50,9 @@ def analysis_agent(state: Dict[str, Any]) -> Dict[str, Any]:
         # Perform semantic search and analysis for each query
         logger.info("Beginning analysis of queries...")
         analysis_results = {}
-        for query in config.ANALYSIS_QUERIES:
-            logger.info(f"Processing query: {query[:50]}...")
+        questions = state.get("questions", [])
+        for query in questions:
+            logger.info(f"Processing query: {query}...")
             # Get relevant chunks
             docs = redis_store.similarity_search(query, k=config.RETRIEVAL_K)
             logger.info(f"Retrieved {len(docs)} relevant results")

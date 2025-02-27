@@ -12,10 +12,10 @@ logger = setup_logger(__name__)
 
 def pdf_loader_tool(path: str) -> Dict[str, Any]:
     """
-    Agent responsible for loading and splitting PDF documents.
+    Loader for splitting PDF documents.
     
     Args:
-        state: Current state containing pdf_path
+        pdf file path
         
     Returns:
         Updated state with document chunks or error
@@ -28,7 +28,7 @@ def pdf_loader_tool(path: str) -> Dict[str, Any]:
         documents = loader.load()
         
         # Split documents into chunks
-        logger.info(f"Splitting {len(documents)} documents into chunks")
+        logger.info(f"Splitting {len(documents)} pages into chunks")
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=config.CHUNK_SIZE,
             chunk_overlap=config.CHUNK_OVERLAP

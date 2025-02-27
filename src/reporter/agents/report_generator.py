@@ -1,5 +1,6 @@
 """Report Generator Agent for the Tesla Earnings Analyzer."""
 
+from datetime import datetime
 from typing import Dict, Any
 import json
 import os
@@ -57,7 +58,7 @@ def report_generator_tool(state: Dict[str, Any]) -> Dict[str, Any]:
         # Save report to file
         with open(output_path, "w") as f:
             f.write(report)
-            
+        
         logger.info(f"Report saved to {config.OUTPUT_PATH}")
         
         return_state.update({

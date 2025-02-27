@@ -50,3 +50,20 @@ def vector_store_agent(chunks: Dict[str, Any]) -> None:
     except Exception as e:
         error_msg = f"Error loading embeddings: {str(e)}"
         logger.error(error_msg)
+        
+def check_redis_vectorstore_exists() -> bool:
+    """
+    Check if the Redis vector store exists.
+    """
+    try:
+        redis_client = redis.from_url(config.REDIS_URL)
+        info = redis_client.ft("tsla_earnings").info()
+        if info.get('num_records') > 0:
+            return True
+        else:
+            logger.error("No records found")
+            return False
+    except Exception as e:
+        error_msg = f"Error checking Redis index: {str(e)}"
+        logger.error(error_msg)
+        return False

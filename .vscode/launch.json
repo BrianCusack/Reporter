@@ -5,10 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python Debugger: Module",
+      "name": "Python: Module Debug",
       "type": "debugpy",
       "request": "launch",
-      "module": "reporter",
+      "console": "integratedTerminal",
+      "program": "${file}",
+      "justMyCode": true,
+      "args": ["uv", "run", "reporter"]
+    },
+    {
+      "name": "Python: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
     }
   ]
 }
