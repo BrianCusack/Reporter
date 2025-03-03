@@ -1,11 +1,12 @@
 # Tesla Earnings Analyzer
 
-A LangGraph-based system for analyzing Tesla earnings reports. This project extracts information from PDF earnings reports, embeds the content into Redis, analyzes the data, and generates a structured Markdown report.
+A LangGraph-based system for analyzing Tesla earnings reports. This project extracts information from PDF earnings reports, embeds the content into Redis vector store, analyzes the data, and generates a structured Markdown report.
 
 ## Features
 
 - PDF text extraction and chunking
-- Vector embedding using HuggingFace models
+- Multi-agent
+- Vector embedding using Ollama Models
 - Semantic search capabilities
 - LLM-powered analysis using Claude 3.7 Sonnet
 - Markdown report generation
@@ -14,8 +15,8 @@ A LangGraph-based system for analyzing Tesla earnings reports. This project extr
 
 1. Clone this repository
 2. Install dependencies using UV:
-
-WARNING - using Huggingface embeddings (large install)
+3. Run Ollama locally for embeddings, select embedding model
+4. Run Redis-stack locally or update config to cloud
 
 ```bash
 uv sync
@@ -23,7 +24,7 @@ uv sync
 
 3. Create a `.env` file based on `.env.example` and add your Claude API keys
 
-4. Add file `tsla-20240331-gen.py` to the /data directory or rename in the config.py to your file name.
+4. Add financial pdf files to `/data` directory.
 
 5. Run
 
@@ -44,4 +45,5 @@ uv run reporter
 
 - Python 3.12+
 - Redis server
+- Ollama
 - Anthropic API key
