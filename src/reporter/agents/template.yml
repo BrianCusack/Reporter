@@ -1,0 +1,94 @@
+---
+title: "Tesla Earnings Report Analysis Q1 2023 - Q4 2024"
+version: "1.0"
+sections:
+  executive_summary:
+    title: "Executive Summary"
+    subsections:
+      - key_metrics_overview
+      - quarterly_developments
+      - comparative_changes
+
+  financial_performance:
+    title: "Financial Performance"
+    subsections:
+      revenue_analysis:
+        - total_revenue_growth 2023 - 2024
+        - revenue_breakdown
+        - automotive_revenue
+        - energy_storage_revenue
+        - services_revenue
+      
+      profitability:
+        - gross_margin
+        - operating_margin
+        - net_income_eps
+        - free_cash_flow
+
+  operational_metrics:
+    title: "Operational Highlights"
+    subsections:
+      production_deliveries:
+        - vehicle_production
+        - delivery_statistics
+        - regional_performance
+        - factory_utilization
+      
+      energy_business:
+        - solar_deployments
+        - energy_storage
+        - powerwall_megapack
+
+  balance_sheet:
+    title: "Balance Sheet Analysis"
+    subsections:
+      - cash_position
+      - debt_analysis
+      - capital_expenditure
+      - working_capital
+
+  kpis:
+    title: "Key Performance Indicators"
+    metrics:
+      - vehicle_asp
+      - automotive_margin
+      - operating_expenses
+      - rd_investments
+
+  strategic_initiatives:
+    title: "Strategic Initiatives"
+    subsections:
+      - product_development
+      - factory_expansion
+      - technology_advances
+      - market_expansion
+
+  risk_analysis:
+    title: "Risk Assessment"
+    categories:
+      - supply_chain
+      - competition
+      - regulatory
+      - market_challenges
+
+  forward_outlook:
+    title: "Forward Outlook"
+    subsections:
+      - production_targets
+      - expansion_plans
+      - technology_roadmap
+      - financial_guidance
+
+  comparative_analysis:
+    title: "Comparative Analysis"
+    timeframes:
+      - quarter_over_quarter
+      - year_over_year
+      - industry_benchmarks
+
+  conclusion:
+    title: "Conclusion"
+    subsections:
+      - overall_assessment
+      - key_takeaways
+      - recommendations

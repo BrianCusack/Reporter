@@ -1,0 +1,10 @@
+What is the purpose of the template.yml file in the Reporter project?
+How does the template.yml file structure the agents in the Reporter project?
+What are the key components defined in the template.yml file?
+How does the template.yml file integrate with the rest of the langchain Reporter project?
+What configuration options are available in the template.yml file?
+How can the template.yml file be customized for different reporting needs?
+What is the relationship between the template.yml file and the agents directory structure?
+How does the template.yml file handle agent dependencies or interactions?
+What best practices should be followed when modifying the template.yml file?
+How does the template.yml file impact the overall performance of the Reporter system?

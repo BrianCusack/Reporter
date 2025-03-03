@@ -1,50 +1,60 @@
-"""Configuration settings for the Tesla Earnings Analyzer."""
+"""Configuration settings for the Tesla Earnings Analyzer using Pydantic."""
 
-import os
-from dotenv import load_dotenv
+from pathlib import Path
+from typing import Optional
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import field_validator
 
-# Load environment variables
-load_dotenv()
+class Settings(BaseSettings):
+    # API Keys
+    ANTHROPIC_API_KEY: str
 
-# API Keys
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-if not ANTHROPIC_API_KEY:
-    raise ValueError("ANTHROPIC_API_KEY environment variable not set")
+    # LangChain Settings
+    LANGCHAIN_TRACING_V2: str = "false"
+    LANGCHAIN_ENDPOINT: str = "https://api.smith.langchain.com"
+    LANGCHAIN_API_KEY: Optional[str] = None
+    LANGCHAIN_PROJECT: str = "pdf-reporter"
+    LANGCHAIN_CALLBACKS_BACKGROUND: str = "true"
 
-# Vector Store Settings
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:10001")
-REDIS_INDEX_NAME = os.getenv("REDIS_INDEX_NAME", "tsla_earnings")
+    # Vector Store Settings
+    REDIS_URL: str = "redis://localhost:10001"
+    REDIS_INDEX_NAME: str = "tsla_earnings"
 
-# File Paths
-PDF_PATH = os.getenv("PDF_PATH", "data/tsla-20240331-gen.pdf")
-OUTPUT_PATH = os.getenv("OUTPUT_PATH", "tesla_earnings_analysis.md")
-GRAPH_PATH = os.getenv("GRAPH_PATH", "output/workflow/workflow_graph.png")
+    # File Paths
+    PDF_PATH: Path = Path("data/")
+    OUTPUT_PATH: Path = Path("tesla_earnings_analysis.md")
+    GRAPH_PATH: Path = Path("output/workflow/workflow_graph.png")
 
-# Model Settings
-CLAUDE_MODEL = "claude-3-7-sonnet-latest"
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+    # Model Settings
+    CLAUDE_MODEL: str = "claude-3-7-sonnet-latest"
+    EMBEDDING_MODEL: str = "nomic-embed-text"
+    OLLAMA_BASE_URL: Optional[str] = None
 
-# Document Processing
-CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 100
-RETRIEVAL_K = 3
+    # Document Processing
+    CHUNK_SIZE: int = 1000
+    CHUNK_OVERLAP: int = 100
+    RETRIEVAL_K: int = 3
 
-# Analysis Queries
-QUESTION_COUNT = 5
+    # Analysis Settings
+    QUESTION_COUNT: int = 10
 
-# Report Section Template
-REPORT_TEMPLATE = """
-# Tesla Earnings Report Summary
+    # Template Settings
+    TEMPLATE_PATH: Path = Path(__file__).parent.parent / "agents" / "template.yml"
 
-## Financial Highlights
+    @field_validator("PDF_PATH", "OUTPUT_PATH", "GRAPH_PATH")
+    @classmethod
+    def create_directories(cls, v: Path) -> Path:
+        v.parent.mkdir(parents=True, exist_ok=True)
+        return v
 
-## Performance Analysis
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=True
+    )
 
-## Growth Metrics
+# Create a single instance to be used throughout the application
+settings = Settings()
 
-## Challenges and Risks
-
-## Future Outlook
-
-## Conclusion
-"""
+# Export the instance
+__all__ = ['settings']
