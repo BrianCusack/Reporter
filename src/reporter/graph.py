@@ -52,4 +52,4 @@ def create_workflow() -> StateGraph:
     )
 
     # Compile the graph
-    return workflow.compile()
+    return workflow
