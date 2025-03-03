@@ -3,8 +3,6 @@ from unittest.mock import Mock, patch
 import time
 import numpy as np
 import redis
-from redis.commands.search.field import VectorField
-from redis.commands.search.query import Query
 from reporter.agents.planner import planner_agent
 
 # filepath: src/reporter/agents/test_planner.py
@@ -86,9 +84,7 @@ def test_embedding_performance():
         )
     dragonfly_time = time.time() - dragonfly_start
     
-    print(f"\nPerformance Results:")
-    print(f"Redis insertion time: {redis_time:.2f} seconds")
-    print(f"Dragonfly insertion time: {dragonfly_time:.2f} seconds")
+    print(f"\nPerformance Results:\nRedis insertion time: {redis_time:.2f} seconds\nDragonfly insertion time: {dragonfly_time:.2f} seconds")
     
     # Cleanup
     redis_client.flushall()
