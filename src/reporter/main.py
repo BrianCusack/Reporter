@@ -52,7 +52,7 @@ def process_earnings_report() -> None:
 
     # Create and compile the workflow
     app = create_workflow()
-    
+
     app.compile()
 
     # Save graph with timestamp
