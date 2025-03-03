@@ -12,6 +12,7 @@ from utils.log_setup import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def parse_questions(response: str) -> list[str]:
     """Parse questions from LLM response and validate"""
     # Try to find a Python list in the response using regex

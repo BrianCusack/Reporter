@@ -9,7 +9,8 @@ from utils.log_setup import setup_logger
 
 logger = setup_logger(__name__)
 
-def analysis_agent( state: Dict[str, Any]) -> Dict[str, Any]:
+
+def analysis_agent(state: Dict[str, Any]) -> Dict[str, Any]:
     """
     Agent that analyzes the embedded document by querying the vector store.
 

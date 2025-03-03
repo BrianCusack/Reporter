@@ -5,6 +5,7 @@ from typing import Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import field_validator
 
+
 class Settings(BaseSettings):
     # API Keys
     ANTHROPIC_API_KEY: str
@@ -48,13 +49,12 @@ class Settings(BaseSettings):
         return v
 
     model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        case_sensitive=True
+        env_file=".env", env_file_encoding="utf-8", case_sensitive=True
     )
+
 
 # Create a single instance to be used throughout the application
 settings = Settings()
 
 # Export the instance
-__all__ = ['settings']
+__all__ = ["settings"]
